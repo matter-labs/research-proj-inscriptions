@@ -1,0 +1,7 @@
+matplotlib==3.7.2
+numpy==1.26.4
+pandas==2.2.1
+polars==0.20.18
+tqdm==4.65.0
+plotly==5.19.0
+web3==6.9.0
