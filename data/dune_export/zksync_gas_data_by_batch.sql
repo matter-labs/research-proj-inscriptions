@@ -1,7 +1,7 @@
 ---- Dune query ID: 3685205
 WITH l1_data AS (
     SELECT *
-    FROM query_3700005 --WHERE l1_batch_number between 308707 and 420802
+    FROM query_3700005
 ),
 zksync_txs AS (
     SELECT l1_batch_number,
@@ -22,10 +22,10 @@ zksync_txs AS (
             )
         ) AS calldata_gas_used
     FROM zksync.transactions
-    WHERE date(block_time) between date('2023-11-15') and date('2024-11-17')
+    WHERE date(block_time) between date('2023-11-15') AND date('2024-01-31')
 )
-SELECT l1_data.l1_batch_number,
-    MAX(block_time) as last_block_time,
+SELECT l1_data.l1_batch_number AS l1_batch_number,
+    MAX(block_time) AS batch_time,
     COUNT(*) AS transactions,
     SUM(gas_used) AS total_gas_used,
     ANY_VALUE(l1_gas_used) AS total_gas_used_for_l1,
@@ -53,5 +53,6 @@ SELECT l1_data.l1_batch_number,
 FROM zksync_txs
     LEFT JOIN l1_data on zksync_txs.l1_batch_number = l1_data.l1_batch_number
 WHERE success = true
+    AND date(block_time) between date('2023-11-15') AND date('2024-01-31')
 GROUP BY l1_data.l1_batch_number
 ORDER BY l1_data.l1_batch_number

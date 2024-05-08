@@ -1,3 +1,6 @@
+---- Dune query ID: 3685050
+---- Note: due to the size of results, we had to download the query from dune in two parts:
+------- 2023-11-15 to 2023-12-31 + 2023-12-30 to 2024-01-31
 SELECT block_number,
     ANY_VALUE(block_time) AS block_time,
     COUNT(*) AS transactions,
@@ -17,7 +20,7 @@ SELECT block_number,
             )
         )
     ) AS total_calldata_gas_used,
-    AVG(effective_gas_price / 1e9) AS avg_gas_price_qwei,
+    AVG(effective_gas_price / 1e9) AS avg_gas_price_gwei,
     SUM(effective_gas_price / 1e18 * gas_used) AS total_tx_fee_eth,
     AVG(effective_gas_price / 1e18 * gas_used) AS avg_tx_fee_eth,
     SUM(effective_gas_price / 1e18 * gas_used_for_l1) AS total_l1_fee_eth,
