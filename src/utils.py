@@ -777,3 +777,11 @@ def construct_events_dict(self):
     self.events_dict['0x3f693fff038bb8a046aa76d9516190ac7444f7d69cf952c4cbdc086fdef2d6fc'] = {
         'name': 'Redeem', 'signature': 'Redeem(address,address,uint256,uint256)'
     }
+
+    self.events_dict['0xe19260aff97b920c7df27010903aeb9c8d2be5d310a2c67824cf3f15396e4c16'] = {
+        'name': 'Transfer', 'signature': 'Transfer(address,address,uint256,bytes)'
+    }
+    self.events_dict['0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0'] = {
+        'name': 'OwnershipTransferred', 'signature': 'OwnershipTransferred(address,address)'
+    }
+
